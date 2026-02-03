@@ -182,7 +182,7 @@ def keep_alive():
 
 def main():
     log.info("=" * 45)
-    log.info("  UD Seat Monitor — started")
+    log.info("  UD Seat Monitor - started")
     log.info(f"  Watching {len(COURSES)} course(s), checking every {CHECK_INTERVAL_SECONDS}s")
     log.info(f"  Notifications via: {NOTIFICATION_METHOD}")
     log.info("=" * 45)
@@ -225,23 +225,23 @@ def main():
                 status = (
                     f"{wl_tag}"
                     f"{sec['available']}/{sec['capacity']} seats"
-                    f"{' — FULL' if sec['full'] else ' — OPEN'}"
+                    f"{' - FULL' if sec['full'] else ' - OPEN'}"
                     f"{pri_tag}"
                 )
                 log.info(f"  {sec['code']} ({sec['type']}) {status}")
 
                 if prev is not None and prev["available"] == 0 and sec["available"] > 0:
                     if is_priority:
-                        title = f"PRIORITY SEAT OPENED — {sec['code']}"
+                        title = f"PRIORITY SEAT OPENED - {sec['code']}"
                     else:
-                        title = f"Seat opened — {sec['code']}"
+                        title = f"Seat opened - {sec['code']}"
 
                     body = (
                         f"{sec['title']}\n"
                         f"Section: {sec['code']} ({sec['type']})\n"
                         f"Seats: {sec['available']} of {sec['capacity']} now open\n"
                         f"{sec['days']}  {sec['time']}  {sec['campus']}\n"
-                        f"— {datetime.now().strftime('%I:%M %p')}"
+                        f"- {datetime.now().strftime('%I:%M %p')}"
                     )
                     log.info(f"  [ALERT] {title}")
                     send_notification(title, body, urgent=is_priority)
