@@ -168,6 +168,18 @@ def send_discord(title: str, body: str, urgent: bool = False):
         log.error(f"  [FAIL] Discord: {e}")
 
 
+def keep_alive():
+    url = os.environ.get("RENDER_EXTERNAL_URL")
+    if not url:
+        return
+    while True:
+        time.sleep(600)
+        try:
+            requests.get(url, timeout=10)
+        except Exception:
+            pass
+
+
 def main():
     log.info("=" * 45)
     log.info("  UD Seat Monitor — started")
@@ -256,5 +268,6 @@ class _Health(BaseHTTPRequestHandler):
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8000))
     threading.Thread(target=lambda: HTTPServer(("", port), _Health).serve_forever(), daemon=True).start()
+    threading.Thread(target=keep_alive, daemon=True).start()
     log.info(f"  Health server on port {port}")
     main()
