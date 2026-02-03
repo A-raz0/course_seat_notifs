@@ -3,7 +3,7 @@ COURSES = [
         "label": "PHYS228 - Fundamentals of Physics Lab II",
         "course_sec": "phys228",
         "term": "2263", #change every sem
-        "sections": ["040", "041", "042"],
+        "sections": ["045", "042"],
         "priority": ["042"],
     },
         {
