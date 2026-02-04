@@ -3,7 +3,7 @@ COURSES = [
         "label": "PHYS228 - Fundamentals of Physics Lab II",
         "course_sec": "phys228",
         "term": "2263", #change every sem
-        "sections": ["045", "042"],
+        "sections": ["042"],
         "priority": ["042"],
     },
         {
@@ -12,6 +12,13 @@ COURSES = [
         "term": "2263",
         "sections": ["012", "013", "014", "015", "016"],
         "priority": ["013"],
+    },
+            {
+        "label": "PSYC350 - Developmental Psychology",
+        "course_sec": "psyc350",
+        "term": "2263",
+        "sections": ["010"],
+        "priority": ["010"],
     },
 ]
 
